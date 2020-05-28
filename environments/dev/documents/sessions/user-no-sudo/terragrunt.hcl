@@ -3,8 +3,21 @@ include {
 }
 
 terraform {
-  source = "git::ssh://git@github.com:ManagedKube/aws-ssm-interactive-sessions.git//modules/documents/sessions?ref=v1.0.0"
+  source = "git::ssh://git@github.com/ManagedKube/aws-ssm-interactive-sessions.git//modules/documents/sessions?ref=v1.0.0"
 
+}
+
+dependency "s3_session_log_bucket" {
+  config_path  = "../../../s3_bucket_interactive_session_logs"
+  mock_outputs = {
+    bucket_name = "s3_bucket_123"
+  }
+}
+
+dependencies {
+  paths = [
+    "../../../s3_bucket_interactive_session_logs"
+  ]
 }
 
 inputs = {
@@ -17,7 +30,7 @@ inputs = {
   "description": "Document to hold regional settings for Session Manager",
   "sessionType": "Standard_Stream",
   "inputs": {
-    "s3BucketName": "${get_aws_account_id()}-ssm-session-logs-dev",
+    "s3BucketName": "${dependency.s3_session_log_bucket.outputs.bucket_name}",
     "s3KeyPrefix": "dev",
     "s3EncryptionEnabled": false,
     "cloudWatchLogGroupName": "",

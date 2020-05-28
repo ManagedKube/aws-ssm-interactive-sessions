@@ -177,7 +177,17 @@ Doc: https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-agent-l
 * `/var/log/amazon/ssm/amazon-ssm-agent.log`
 * `/var/log/amazon/ssm/errors.log`
 
-The Session log:
+#### Errors writing to S3
+If you are finding that no session logs are written to S3, a good place to look is on the EC2 node that you think should be writing the sessions logs there.  The `/var/log/amazon/ssm/errors.log` file will give more information about errors that occurs.
+
+```
+[root@ip-10-10-1-85 bin]# tail -f /var/log/amazon/ssm/errors.log
+2020-05-28 03:46:41 ERROR [S3Upload @ s3util.go.114] [ssm-session-worker] [garland.kan-07e8f9f9bd1fe355f] [DataBackend] [pluginName=Standard_Stream] Failed uploading /var/lib/amazon/ssm/i-0b5b95b986fe76e8d/session/orchestration/garland.kan-07e8f9f9bd1fe355f/Standard_Stream/garland.kan-07e8f9f9bd1fe355f.log to s3://126911164279-ssm-session-logs-dev/dev/garland.kan-07e8f9f9bd1fe355f.log err:NoSuchBucket: The specified bucket does not exist
+        status code: 404, request id: 094FAE2E7D0C1D4D, host id: M/zkEsrNFv/dTVzjq/zR1rRNHl4ZmFk3+j6/etw624G3xpWrAIaMT85PV3Dy5VjEk4jBMfhlUvY=
+2020-05-28 03:46:41 ERROR [func1 @ shell.go.96] [ssm-session-worker] [garland.kan-07e8f9f9bd1fe355f] [DataBackend] [pluginName=Standard_Stream] Error occurredwhile closing pty: unable to close ptyFile. close /dev/ptmx: file already closed
+```
+
+### S3 Session log:
 * Has the session id: `garland.kan.temp-0073b0a9869ded8de`.  This can be used to tie it back to the CloudTrail logs
 ```
 Script started on 2020-05-27 23:00:48+0000
@@ -271,6 +281,25 @@ The sequence of activities?
 ### Who was involved?
 Who was the unique user involved?
 
+# Deploying
+
+## Requirements
+* Terraform 0.12+
+* Terragrunt 0.19+
+
+## Set AWS Credentials
+
+```
+export AWS_ACCESS_KEY_ID=""
+export AWS_SECRET_ACCESS_KEY=""
+export AWS_DEFAULT_REGION=us-east-1
+```
+
+## Deploy
+Run:
+```
+terragrunt apply-all
+```
 
 # Usage
 

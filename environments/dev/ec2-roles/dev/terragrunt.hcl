@@ -3,8 +3,21 @@ include {
 }
 
 terraform {
-  source = "git::ssh://git@github.com:ManagedKube/aws-ssm-interactive-sessions.git//modules/ec2-role/?ref=v1.0.0"
+  source = "git::ssh://git@github.com/ManagedKube/aws-ssm-interactive-sessions.git//modules/ec2-role/?ref=v1.0.0"
 
+}
+
+dependency "s3_session_log_bucket" {
+  config_path  = "../../s3_bucket_interactive_session_logs"
+  mock_outputs = {
+    bucket_name = "s3_bucket_123"
+  }
+}
+
+dependencies {
+  paths = [
+    "../../s3_bucket_interactive_session_logs"
+  ]
 }
 
 inputs = {
@@ -12,7 +25,7 @@ inputs = {
 
   name = "GroupDev"
 
-  s3_bucket_name = "${get_aws_account_id()}-ssm-session-logs-dev"
+  s3_bucket_name = "${dependency.s3_session_log_bucket.outputs.bucket_name}"
   s3_bucket_prefix = "dev"
 
   tags = {

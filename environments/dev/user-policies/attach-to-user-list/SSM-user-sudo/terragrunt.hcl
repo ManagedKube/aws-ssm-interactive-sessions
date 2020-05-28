@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "git::ssh://git@github.com:ManagedKube/aws-ssm-interactive-sessions.git//modules/user-policies/attach-policy-to-user?ref=v1.0.0"
+  source = "git::ssh://git@github.com/ManagedKube/aws-ssm-interactive-sessions.git//modules/user-policies/attach-policy-to-user?ref=v1.0.0"
 }
 
 dependency "ssm_user_sudo" {
@@ -21,8 +21,7 @@ dependencies {
 
 inputs = {
   user_list = [
-      "garland.kan.temp", 
-      "gar-tmp",
+      "garland.kan",
   ]
 
   policy_arn = dependency.ssm_user_sudo.outputs.aws_iam_policy_arn
