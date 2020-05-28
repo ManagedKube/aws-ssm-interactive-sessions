@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "git::ssh://git@github.com/ManagedKube/aws-ssm-interactive-sessions.git//modules/user-policies/attach-policy-to-user?ref=v1.0.1"
+  source = "git::ssh://git@github.com/ManagedKube/aws-ssm-interactive-sessions.git//modules/user-policies/attach-policy-to-user?ref=v1.0.2"
 }
 
 dependency "ssm_user_sudo" {

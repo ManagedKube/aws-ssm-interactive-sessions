@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "git::ssh://git@github.com/ManagedKube/aws-ssm-interactive-sessions.git//modules/user-policies/restrict-by-ssm-document?ref=v1.0.1"
+  source = "git::ssh://git@github.com/ManagedKube/aws-ssm-interactive-sessions.git//modules/user-policies/restrict-by-ssm-document?ref=v1.0.2"
 }
 
 inputs = {

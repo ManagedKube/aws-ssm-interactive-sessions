@@ -3,7 +3,7 @@ include {
 }
 
 terraform {
-  source = "git::ssh://git@github.com/ManagedKube/aws-ssm-interactive-sessions.git//modules/ec2-role/?ref=v1.0.1"
+  source = "git::ssh://git@github.com/ManagedKube/aws-ssm-interactive-sessions.git//modules/ec2-role/?ref=v1.0.2"
 
 }
 
