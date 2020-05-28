@@ -30,6 +30,8 @@ resource "aws_s3_bucket" "main" {
 resource "aws_s3_bucket_public_access_block" "block_public_access" {
   bucket = aws_s3_bucket.main.id
 
-  block_public_acls   = true
-  block_public_policy = true
+  block_public_acls       = var.aws_s3_bucket_public_access_block_block_public_acls
+  block_public_policy     = var.aws_s3_bucket_public_access_block_block_public_policy
+  ignore_public_acls      = var.aws_s3_bucket_public_access_block_ignore_public_acls
+  restrict_public_buckets = var.aws_s3_bucket_public_access_block_restrict_public_buckets
 }

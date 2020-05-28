@@ -26,3 +26,19 @@ variable "policy" {
   description = "The bucket policy"
   default     = ""
 }
+
+variable "aws_s3_bucket_public_access_block_block_public_acls" {
+  default = true
+}
+
+variable "aws_s3_bucket_public_access_block_block_public_policy" {
+  default = true
+}
+
+variable "aws_s3_bucket_public_access_block_ignore_public_acls" {
+  default = true
+}
+
+variable "aws_s3_bucket_public_access_block_restrict_public_buckets" {
+  default = true
+}
