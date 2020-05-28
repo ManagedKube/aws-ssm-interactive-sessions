@@ -1,0 +1,10 @@
+.DS_Store
+.idea/
+.vagrant/
+.terraform/
+*.tfstate
+*.backup
+*.lock.info
+.terragrunt-cache/
+*~
+*.code-workspace
