@@ -115,6 +115,8 @@ Any EC2 instance that wants to participate in this setup, needs to have the AWS 
 
 Prerequisites: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-prerequisites.html
 
+A list of EC2 instances with the SSM agent already installed: https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html
+
 ## Should not use `aws ssm start-session` on a shared machine
 You probably should not use the `aws ssm start-session` to connect to a remote machine on a shared machine.  The AWS temporary token value shows up in the `ps` list:
 
