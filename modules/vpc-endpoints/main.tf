@@ -1,12 +1,3 @@
-terraform {
-  backend "s3" {
-  }
-}
-
-provider "aws" {
-  region = var.region
-}
-
 resource "aws_security_group" "sg" {
   name        = "ssm_vpc_endpoint${var.name}"
   description = "An SG for the SSM VPC endpoints"
