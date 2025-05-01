@@ -25,7 +25,7 @@ The goals:
 Modules: 
 * `ec2-role`
 
-There is a role that is created that is assigned to an EC2 instance that wants to participate in this setup.  
+There is a role that is created that is assigned to an EC2 instance that wants to participate in this setup.  You can add it as the instance profile. 
 
 This role gives permission for:
 * SSM permissions for the node to be able to send/recieve messsages in the AWS SSM setup
@@ -114,6 +114,8 @@ Since we have the full capture, we can say we have a compensating control for th
 Any EC2 instance that wants to participate in this setup, needs to have the AWS ssm-agent installed on it.  This is a prerequisite for this setup.
 
 Prerequisites: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-prerequisites.html
+
+A list of EC2 instances with the SSM agent already installed: https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html
 
 ## Should not use `aws ssm start-session` on a shared machine
 You probably should not use the `aws ssm start-session` to connect to a remote machine on a shared machine.  The AWS temporary token value shows up in the `ps` list:

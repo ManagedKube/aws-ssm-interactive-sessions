@@ -1,8 +1,3 @@
-terraform {
-  backend "s3" {
-  }
-}
-
 resource "aws_iam_policy" "policy" {
   name        = var.name
   description = "A policy to restrict user by an SSM document."
