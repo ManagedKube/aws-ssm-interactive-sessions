@@ -1,12 +1,3 @@
-terraform {
-  backend "s3" {
-  }
-}
-
-provider "aws" {
-  region = var.region
-}
-
 resource "aws_iam_instance_profile" "test_profile" {
   name = "OpsEC2SSM${var.name}"
   role = aws_iam_role.role.name
