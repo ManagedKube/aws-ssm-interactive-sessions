@@ -25,7 +25,7 @@ The goals:
 Modules: 
 * `ec2-role`
 
-There is a role that is created that is assigned to an EC2 instance that wants to participate in this setup.  
+There is a role that is created that is assigned to an EC2 instance that wants to participate in this setup.  You can add it as the instance profile. 
 
 This role gives permission for:
 * SSM permissions for the node to be able to send/recieve messsages in the AWS SSM setup
